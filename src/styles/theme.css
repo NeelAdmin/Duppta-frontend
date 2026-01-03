@@ -1,0 +1,19 @@
+/* Light Theme (default) */
+:root {
+  --color-primary: #0f2027;   /* Blue */
+  --color-background: #ffffff; /* White */
+  --color-text: #000000;        /* Black text */
+
+  --color-card-bg: #f7faff;
+  --color-border: #e3e3e3;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --color-primary: #1e90ff;      /* Same blue */
+  --color-background: #000000;   /* Black */
+  --color-text: #ffffff;         /* White text */
+
+  --color-card-bg: #0b0b0b;
+  --color-border: #333333;
+}
