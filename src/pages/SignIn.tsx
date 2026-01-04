@@ -18,6 +18,7 @@ import {
   Fade,
   InputAdornment,
   IconButton,
+  type ContainerProps,
 } from '@mui/material';
 import { Lock as LockIcon, Phone as PhoneIcon, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useLoginMutation } from '../features/auth/authApi';
@@ -25,7 +26,7 @@ import { setCredentials } from '../features/auth/authSlice';
 import { loginSchema, type LoginFormData } from '../validations/authSchemas';
 import { useDispatch } from 'react-redux';
 
-const StyledContainer = styled(Container)(({ theme }) => ({
+const StyledContainer = styled(Container)<ContainerProps>(({ theme }) => ({
   minHeight: '100vh',
   display: 'flex',
   alignItems: 'center',
