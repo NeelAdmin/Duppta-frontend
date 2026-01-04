@@ -17,12 +17,13 @@ import {
   Fade,
   InputAdornment,
   IconButton,
+  type ContainerProps,
 } from '@mui/material';
 import { Person as PersonIcon, Phone as PhoneIcon, Lock as LockIcon, Home as HomeIcon, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useRegisterMutation } from '../features/auth/authApi';
 import { registerSchema, type RegisterFormData } from '../validations/authSchemas';
 
-const StyledContainer = styled(Container)(({ theme }) => ({
+const StyledContainer = styled(Container)<ContainerProps>(({ theme }) => ({
   minHeight: '100vh',
   display: 'flex',
   alignItems: 'center',
