@@ -20,8 +20,6 @@ import {
 } from '@mui/material';
 import {
   Close as CloseIcon,
-  Edit as EditIcon,
-  Straighten as MeterIcon,
   Category as CategoryIcon,
   AttachMoney as MoneyIcon,
 
@@ -141,7 +139,7 @@ export const DesignForm: React.FC<DesignFormProps> = ({
                 fullWidth
                 margin="normal"
                 error={!!errors.name}
-                helperText={errors.name?.message}
+                helperText={errors.name?.message?.toString()}
                 disabled={isLoading}
                 sx={inputStyle}
                 InputProps={{
@@ -160,7 +158,7 @@ export const DesignForm: React.FC<DesignFormProps> = ({
                 fullWidth
                 margin="normal"
                 error={!!errors.ratePerUnit}
-                helperText={errors.ratePerUnit?.message}
+                helperText={errors.ratePerUnit?.message?.toString()}
                 disabled={isLoading}
                 inputProps={{ step: '0.01', min: 0 }}
                 sx={inputStyle}
@@ -180,7 +178,7 @@ export const DesignForm: React.FC<DesignFormProps> = ({
                 fullWidth
                 margin="normal"
                 error={!!errors.ratePerMeter}
-                helperText={errors.ratePerMeter?.message}
+                helperText={errors.name?.message?.toString()}
                 disabled={isLoading}
                 inputProps={{ step: '0.01', min: 0 }}
                 sx={inputStyle}

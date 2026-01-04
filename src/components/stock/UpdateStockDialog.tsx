@@ -15,7 +15,6 @@ import {
   CircularProgress,
   IconButton,
   Typography,
-  Divider,
   useTheme,
   Paper,
   InputAdornment
@@ -103,7 +102,7 @@ const UpdateStockDialog: React.FC<UpdateStockDialogProps> = ({
   const selectedDesign = designs?.find(d => d._id === form.designId);
   const filteredVariants = variants?.find(v => v.designName === selectedDesign?.name)?.varients || [];
 
-  const handleChange = (e: React.ChangeEvent<{ name?: string; value: unknown }>) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     if (!name) return;
 

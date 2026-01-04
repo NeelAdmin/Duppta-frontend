@@ -1,12 +1,12 @@
 // src/pages/VariantManagement.tsx
 import React, { useState, useMemo } from 'react';
 import {
-  Box, Button, Container, TextField, Table, TableBody, TableCell,
-  TableContainer, TableHead, TableRow, Paper, Tooltip, Typography, InputAdornment,
-  CircularProgress, Avatar, Badge, IconButton, Grid, alpha, useTheme
+  Box, Button, Container, TextField, 
+  Paper, Typography, InputAdornment,
+  CircularProgress, IconButton, Grid, alpha, useTheme
 } from '@mui/material';
 import {
-  Add as AddIcon, Search as SearchIcon, Delete as DeleteIcon, Edit as EditIcon
+  Add as AddIcon, Search as SearchIcon, Delete as DeleteIcon
 } from '@mui/icons-material';
 import { toast } from 'react-toastify';
 import { useGetVariantsQuery, useDeleteVariantMutation } from '../features/common/variantApi';
@@ -15,11 +15,6 @@ import { ConfirmationDialog } from '../components/common/ConfirmationDialog';
 import AddVariantDialog from '../components/varient/AddVariantDialog';
 import { Chip } from '@mui/material';
 
-const getContrastText = (color: string) => {
-  // simple contrast heuristic for our limited color set
-  const darkColors = ['black', 'maroon', 'wine'];
-  return darkColors.includes(color) ? '#fff' : '#000';
-};
 
 const VariantManagement: React.FC = () => {
   const theme = useTheme();
@@ -35,7 +30,7 @@ const VariantManagement: React.FC = () => {
   const [deleteVariant, { isLoading: deleting }] = useDeleteVariantMutation();
 
   // Normalized arrays from API shape
-  const grouped = variantsResponse?.varient ?? [];
+  const grouped = variantsResponse?.variant ?? [];
   const designsList = designsResponse?.design ?? [];
 
   // Filtering: keep groups where designName or any variant color matches search
@@ -70,20 +65,6 @@ const VariantManagement: React.FC = () => {
       console.error('Error deleting variant:', err);
       toast.error('Failed to delete variant');
     }
-  };
-
-
-
- 
-  const variantCardSx = {
-    p: 1,
-    borderRadius: 1.5,
-    boxShadow: 1,
-    bgcolor: 'background.paper',
-    minHeight: 72,
-    display: 'flex',
-    flexDirection: 'column' as const,
-    justifyContent: 'center',
   };
 
   return (
@@ -136,7 +117,7 @@ const VariantManagement: React.FC = () => {
             <CircularProgress />
           </Box>
         ) : isError ? (
-          <Paper sx={{ p: 3, textAlign: 'center', bgcolor: theme.palette.error.background }}>
+          <Paper sx={{ p: 3, textAlign: 'center', bgcolor: '#fff5f5' }}>
             <Typography color="error">Error loading variants. Please try again later.</Typography>
           </Paper>
         ) : filteredGroups.length === 0 ? (
@@ -171,7 +152,7 @@ const VariantManagement: React.FC = () => {
         ) : (
           <Grid container spacing={2}>
             {filteredGroups.map((group: any) => (
-          <Grid item xs={12} sm={6} key={group.designName}>
+          <Grid size={{xs:12, sm:6}} key={group.designName}>
                 <Paper 
                   elevation={0}
                   sx={{

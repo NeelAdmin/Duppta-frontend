@@ -11,7 +11,7 @@ interface User {
 }
 
 interface AuthState {
-  user: User | null;
+  user: any | null;
   accessToken: string | null;
   refreshToken: string | null;
   isAuthenticated: boolean;

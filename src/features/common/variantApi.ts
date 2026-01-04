@@ -37,11 +37,11 @@ export const variantApi = createApi({
   }),
   tagTypes: ['Variant'],
   endpoints: (builder) => ({
-    getVariants: builder.query<{ variant: DesignWithVariants[] }, void>({
+    getVariants: builder.query<any, void>({
   query: () => '/varient/all',
   providesTags: ['Variant'],
 }),
-    addVariant: builder.mutation<Variant, AddVariantRequest>({
+    addVariant: builder.mutation<any, any>({
       query: (body) => ({
         url: '/varient/add',
         method: 'POST',
@@ -49,7 +49,7 @@ export const variantApi = createApi({
       }),
       invalidatesTags: ['Variant'],
     }),
-    deleteVariant: builder.mutation<void, string>({
+    deleteVariant: builder.mutation<any, any>({
       query: (id) => ({
         url: `/varient/${id}/delete`,
         method: 'DELETE',

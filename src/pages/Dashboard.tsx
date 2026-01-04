@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import {
   Box,
   Typography,
-  Grid,
   Paper,
   Table,
   TableBody,
@@ -10,7 +9,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  TextField,
   Card,
   CardContent,
   useTheme,
@@ -164,17 +162,39 @@ const Dashboard: React.FC = () => {
           }}
         >
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DatePicker
+            {/* <DatePicker
               label="From Date"
               value={fromDate}
               onChange={setFromDate}
-              renderInput={(params) => <TextField {...params} size="small" />}
+              renderInput={(params:any) => <TextField {...params} size="small" />}
             />
             <DatePicker
               label="To Date"
               value={toDate}
               onChange={setToDate}
-              renderInput={(params) => <TextField {...params} size="small" />}
+              renderInput={(params:any) => <TextField {...params} size="small" />}
+            /> */}
+            <DatePicker
+              label="From Date"
+              value={fromDate}
+              onChange={(newValue) => setFromDate(newValue)}
+              slotProps={{
+                textField: {
+                  size: 'small',
+                  fullWidth: true
+                }
+              }}
+            />
+            <DatePicker
+              label="To Date"
+              value={toDate}
+              onChange={(newValue) => setToDate(newValue)}
+              slotProps={{
+                textField: {
+                  size: 'small',
+                  fullWidth: true
+                }
+              }}
             />
           </LocalizationProvider>
         </Box>
@@ -318,7 +338,7 @@ const Dashboard: React.FC = () => {
                   dataKey="meters"
                   nameKey="name"
                   label={({ name, percent }) =>
-                    `${name} (${(percent * 100).toFixed(0)}%)`
+                    `${name} (${(percent ? percent * 100 : 0).toFixed(0)}%)`
                   }
                 >
                   {byDesign.map((_, index) => (
@@ -339,9 +359,9 @@ const Dashboard: React.FC = () => {
 
 
       {/* TABLE SECTION */}
-        <Box sx={{ p: { xs: 1.5, sm: 1 }, }}>
-          <Typography variant="h6" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' }, fontWeight: 600 }}>Detailed Stock Summary</Typography>
-        </Box>
+      <Box sx={{ p: { xs: 1.5, sm: 1 }, }}>
+        <Typography variant="h6" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' }, fontWeight: 600 }}>Detailed Stock Summary</Typography>
+      </Box>
       <Paper sx={{ width: '100%', borderRadius: 2, boxShadow: 2, overflow: 'hidden', mt: { xs: 2, sm: 3 } }}>
         <TableContainer sx={{ maxHeight: 440 }}>
           <Table>
@@ -350,7 +370,7 @@ const Dashboard: React.FC = () => {
                 background: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
                 position: 'relative',
                 overflow: 'hidden',
-              }}> 
+              }}>
                 <TableCell sx={{ fontWeight: 'bold', color: 'white' }}>Design</TableCell>
                 <TableCell sx={{ fontWeight: 'bold', color: 'white' }}>Color</TableCell>
                 <TableCell align="right" sx={{ fontWeight: 'bold', color: 'white' }}>Meters</TableCell>

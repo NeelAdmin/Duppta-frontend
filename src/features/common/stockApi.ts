@@ -58,7 +58,7 @@ export const stockApi = createApi({
   }),
   tagTypes: ['Stock'],
   endpoints: (builder) => ({
-    getStocks: builder.query<{ stocks: Stock[] }, void>({
+    getStocks: builder.query<{ stock: Stock[] }, void>({
       query: () => '/stock/get',
       providesTags: ['Stock'],
     }),
@@ -85,7 +85,7 @@ export const stockApi = createApi({
       }),
       invalidatesTags: ['Stock'],
     }),
-    getUserWork: builder.query<{ stocks: Stock[] }, void>({
+    getUserWork: builder.query<{ stock:any }, void>({
       query: () => '/stock/get-assigned-stocks',
       providesTags: ['Stock'],
     }),

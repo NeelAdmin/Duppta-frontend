@@ -27,12 +27,12 @@ export const designApi = createApi({
   }),
   tagTypes: ['Design'],
   endpoints: (build) => ({
-    getDesigns: build.query<Design[], void>({
+    getDesigns: build.query<any, void>({
       query: () => '/design/all',
       providesTags: ['Design'],
     }),
 
-    addDesign: build.mutation<Design, DesignRequest>({
+    addDesign: build.mutation<any, any>({
       query: (body) => ({
         url: '/design/add',
         method: 'POST',
@@ -48,7 +48,7 @@ export const designApi = createApi({
       }),
       invalidatesTags: ['Design'],
     }),
-    deleteDesign: build.mutation<Design, string>({
+    deleteDesign: build.mutation<any, string>({
       query: (id) => ({
         url: `/design/${id}/delete`,
         method: 'DELETE',

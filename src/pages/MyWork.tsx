@@ -28,6 +28,7 @@ const MyWork = () => {
   const user = JSON.parse(localStorage.getItem('user') || '{}'); // Get current user
 
   const handleChangePage = (event: unknown, newPage: number) => {
+    console.log(event);
     setPage(newPage);
   };
 
@@ -40,7 +41,7 @@ const MyWork = () => {
   const isFitter = (stock: any) => stock.fitBy?._id === user._id;
   const isCutter = (stock: any) => stock.cutBy?._id === user._id;
 
-  const filteredStocks = data?.stock?.filter(stock => 
+  const filteredStocks = data?.stock?.filter((stock: any) => 
     (isFitter(stock) || isCutter(stock)) && (
       stock.designId.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       stock.varientId.color.toLowerCase().includes(searchTerm.toLowerCase())

@@ -49,7 +49,6 @@ interface FixedLayoutProps {
 
 export default function FixedLayout({ children }: FixedLayoutProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('dashboard');
   const { user } = useSelector((state: RootState) => state.auth);
   
   

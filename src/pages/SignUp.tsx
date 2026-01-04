@@ -20,6 +20,7 @@ import { registerSchema, type RegisterFormData } from '../validations/authSchema
 const SignUp: React.FC = () => {
   const navigate = useNavigate();
   const [registerUser, { isLoading, error, isSuccess }] = useRegisterMutation();
+  const errorMessage = error && 'data' in error ? (error.data as { message: string }).message : 'An error occurred during registration';
 
   const {
     register,
@@ -67,7 +68,7 @@ const SignUp: React.FC = () => {
 
           {error && (
             <Alert severity="error" sx={{ width: '100%', mt: 2 }}>
-              {('data' in error ? error.data?.message : 'Registration failed') as string}
+              {errorMessage}
             </Alert>
           )}
 

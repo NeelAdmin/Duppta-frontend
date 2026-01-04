@@ -14,11 +14,11 @@ const Users: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Fetch users data
-  const { data: usersData, isLoading, isError } = useGetAllUsersQuery();
-  const users = usersData?.users || [];
+  const { data: usersData, isLoading, isError } = useGetAllUsersQuery({});
+  const users:any = usersData?.user || [];
 
   // Filter users based on search term
-  const filteredUsers = users.filter(user => 
+  const filteredUsers = users?.filter((user:any) => 
     user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     user.mobile.toString().includes(searchTerm) ||
     user.role.toLowerCase().includes(searchTerm.toLowerCase())
@@ -26,6 +26,8 @@ const Users: React.FC = () => {
 
   // Handle pagination
   const handleChangePage = (event: unknown, newPage: number) => {
+    console.log(event);
+    
     setPage(newPage);
   };
 
@@ -161,7 +163,7 @@ const Users: React.FC = () => {
                 {filteredUsers.length > 0 ? (
                   filteredUsers
                     .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                    .map((user) => (
+                    .map((user:any) => (
                       <TableRow key={user._id} hover>
                         <TableCell>{user.name}</TableCell>
                         <TableCell>{user.mobile}</TableCell>

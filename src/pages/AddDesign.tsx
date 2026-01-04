@@ -11,17 +11,14 @@ import {
   TableRow,
   Paper,
   TextField,
-  Button,
   Box,
   Typography,
   CircularProgress,
-  Alert,
   TablePagination,
   Container,
   InputAdornment,
   IconButton,
   Tooltip,
-  styled,
 } from '@mui/material';
 import { Search as SearchIcon, Add as AddIcon, Edit as EditIcon, Delete as DeleteIcon } from '@mui/icons-material';
 import { ConfirmationDialog } from '../components/common/ConfirmationDialog';
@@ -49,6 +46,7 @@ export default function Designs() {
   const theme = useTheme();
 
   const handleChangePage = (event: unknown, newPage: number) => {
+    console.log(event);
     setPage(newPage);
   };
 
@@ -368,7 +366,7 @@ try {
               open={isModalOpen}
               onClose={handleCloseModal}
               onSubmit={handleFormSubmit}
-              isLoading={isLoading}
+              isLoading={adding}
               initialValues={isEditMode ? selectedDesign : undefined}
               isEdit={isEditMode}
             />

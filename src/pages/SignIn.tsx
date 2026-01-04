@@ -3,6 +3,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { type FetchBaseQueryError } from '@reduxjs/toolkit/query';
+
 import {
   Container,
   Box,
@@ -32,6 +34,13 @@ const SignIn: React.FC = () => {
     resolver: yupResolver(loginSchema),
   });
 
+ const errorMessage =
+  (error as FetchBaseQueryError)?.data &&
+  typeof (error as any).data?.message === 'string'
+    ? (error as any).data.message
+    : 'Login failed';
+
+
   const onSubmit = async (data: LoginFormData) => {
     try {
       const result = await login({
@@ -49,7 +58,7 @@ const SignIn: React.FC = () => {
 
       navigate('/dashboard');
     } catch (err) {
-      // Error is already handled by the mutation
+      console.error('Login failed:', err);
     }
   };
 
@@ -79,7 +88,7 @@ const SignIn: React.FC = () => {
 
           {error && (
             <Alert severity="error" sx={{ width: '100%', mt: 2 }}>
-              {('data' in error ? error.data?.message : 'Login failed') as string}
+              {errorMessage}
             </Alert>
           )}
 

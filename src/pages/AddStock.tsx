@@ -1,8 +1,7 @@
 // src/pages/StockManagement.tsx
-import React, { useMemo, useState, useEffect } from "react";
+import  { useMemo, useState } from "react";
 import {
   Box,
-  Button,
   Container,
   TextField,
   Table,
@@ -17,14 +16,6 @@ import {
   Typography,
   InputAdornment,
   CircularProgress,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  MenuItem,
-  FormControl,
-  InputLabel,
-  Select,
   Chip,
   alpha,
   useTheme,
@@ -100,7 +91,7 @@ const StockManagement = () => {
   const { data: stocksData, isLoading, isError } = useGetStocksQuery();
   const { data: designsData } = useGetDesignsQuery();
   const { data: variantsData } = useGetVariantsQuery();
-  const { data: usersData } = useGetAllUsersQuery();
+  const { data: usersData } = useGetAllUsersQuery({});
 
   console.log(usersData);
 
