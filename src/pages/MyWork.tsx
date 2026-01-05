@@ -38,13 +38,13 @@ const MyWork = () => {
   };
 
   // Check if current user is a fitter or cutter
-  const isFitter = (stock: any) => stock.fitBy?._id === user._id;
+  const isFitter = (stock: any) => stock?.fitBy?._id === user._id;
   const isCutter = (stock: any) => stock.cutBy?._id === user._id;
 
   const filteredStocks = data?.stock?.filter((stock: any) => 
     (isFitter(stock) || isCutter(stock)) && (
-      stock.designId.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      stock.varientId.color.toLowerCase().includes(searchTerm.toLowerCase())
+      stock?.designId.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      stock?.varientId.color.toLowerCase().includes(searchTerm.toLowerCase())
     )
   ) || [];
 
