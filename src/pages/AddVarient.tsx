@@ -30,7 +30,9 @@ const VariantManagement: React.FC = () => {
   const [deleteVariant, { isLoading: deleting }] = useDeleteVariantMutation();
 
   // Normalized arrays from API shape
-  const grouped = variantsResponse?.variant ?? [];
+  const grouped = variantsResponse?.varient ?? [];
+  console.log(grouped);
+  
   const designsList = designsResponse?.design ?? [];
 
   // Filtering: keep groups where designName or any variant color matches search

@@ -15,7 +15,7 @@ const Users: React.FC = () => {
 
   // Fetch users data
   const { data: usersData, isLoading, isError } = useGetAllUsersQuery({});
-  const users:any = usersData?.user || [];
+  const users:any = usersData?.users || [];
 
   // Filter users based on search term
   const filteredUsers = users?.filter((user:any) => 

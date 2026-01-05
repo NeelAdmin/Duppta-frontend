@@ -12,11 +12,11 @@ export type Design = {
   ratePerUnit: string | number;
   ratePerMeter: string | number;
 };
-const API_URL = import.meta.env.BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 export const designApi = createApi({
   reducerPath: 'designApi', // unique slice
   baseQuery: fetchBaseQuery({
-    baseUrl: API_URL || 'http://localhost:5000/api/',
+    baseUrl: API_URL || 'https://duppta-backend-1.onrender.com/api/',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
       if (token) {

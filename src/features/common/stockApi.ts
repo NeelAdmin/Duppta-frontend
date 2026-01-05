@@ -41,11 +41,11 @@ export interface UpdateStockRequest extends AddStockRequest {
   cutBy?: string;
   fitBy?: string;
 }
-const API_URL = import.meta.env.BACKEND_URL;
+const API_URL = import.meta.env.VITE_BACKEND_URL;
 export const stockApi = createApi({
   reducerPath: 'stockApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: API_URL || 'http://localhost:5000/api/',
+    baseUrl: API_URL || 'https://duppta-backend-1.onrender.com/api/',
     prepareHeaders: (headers) => {
       const token = localStorage.getItem('accessToken');
       console.log(token);
